@@ -50,9 +50,9 @@ pkgs.writeShellScriptBin "rofimusic" ''
     notification "$choice"
 
     if [[ $link == *playlist* ]]; then
-      ${pkgs.mpv}/bin/mpv --vid=no --shuffle "$link"
+      ${pkgs.mpv}/bin/mpv --vid=no --shuffle --input-ipc-server=/tmp/mpv-music.sock "$link"
     else
-      ${pkgs.mpv}/bin/mpv "$link"
+      ${pkgs.mpv}/bin/mpv --input-ipc-server=/tmp/mpv-music.sock "$link"
     fi
   }
 

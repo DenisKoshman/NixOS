@@ -1,8 +1,8 @@
 -- Resize windows
-hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.resize({ x = 30, y = 0 }), { repeating = true })
-hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.resize({ x = -30, y = 0 }), { repeating = true })
-hl.bind(mainMod .. " + SHIFT + up", hl.dsp.window.resize({ x = 0, y = -30 }), { repeating = true })
-hl.bind(mainMod .. " + SHIFT + down", hl.dsp.window.resize({ x = 0, y = 30 }), { repeating = true })
+--hl.bind(mainMod .. " + SHIFT + right", hl.dsp.window.resize({ x = 30, y = 0 }), { repeating = true })
+--hl.bind(mainMod .. " + SHIFT + left", hl.dsp.window.resize({ x = -30, y = 0 }), { repeating = true })
+--hl.bind(mainMod .. " + SHIFT + up", hl.dsp.window.resize({ x = 0, y = -30 }), { repeating = true })
+--hl.bind(mainMod .. " + SHIFT + down", hl.dsp.window.resize({ x = 0, y = 30 }), { repeating = true })
 
 -- Resize windows with hjkl keys
 hl.bind(mainMod .. " + SHIFT + l", hl.dsp.window.resize({ x = 30, y = 0 }), { repeating = true })
@@ -22,10 +22,10 @@ hl.bind("XF86AudioRaiseVolume", hl.dsp.exec_cmd("pamixer -i 2"), { repeating = t
 hl.bind("xf86Sleep", hl.dsp.exec_cmd("systemctl suspend")) -- Put computer into sleep mode
 hl.bind("XF86AudioMicMute", hl.dsp.exec_cmd("pamixer --default-source -t")) -- mute mic
 hl.bind("XF86AudioMute", hl.dsp.exec_cmd("pamixer -t")) -- mute audio
-hl.bind("XF86AudioPlay", hl.dsp.exec_cmd("playerctl play-pause")) -- Play/Pause media
-hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause")) -- Play/Pause media
-hl.bind("xf86AudioNext", hl.dsp.exec_cmd("playerctl next")) -- go to next media
-hl.bind("xf86AudioPrev", hl.dsp.exec_cmd("playerctl previous")) -- go to previous media
+-- Управление музыкой в MPV (MAINMOD + Клавиши навигации)
+hl.bind(mainMod .. " + SHIFT + down", hl.dsp.exec_cmd("echo 'cycle pause' | nc -U /tmp/mpv-music.sock"))    -- Пауза / Старт
+hl.bind(mainMod .. " + SHIFT + right", hl.dsp.exec_cmd("echo 'playlist-next' | nc -U /tmp/mpv-music.sock"))  -- Следующий трек
+hl.bind(mainMod .. " + SHIFT + left", hl.dsp.exec_cmd("echo 'playlist-prev' | nc -U /tmp/mpv-music.sock"))   -- Предыдущий трек
 -- hl.bind("xf86AudioNext", hl.dsp.exec_cmd(mediactrl .. "next")) -- go to next media
 -- hl.bind("xf86AudioPrev", hl.dsp.exec_cmd(mediactrl .. "previous")) -- go to previous media
 -- hl.bind("XF86AudioPlay", hl.dsp.exec_cmd(mediactrl .. "play-pause")) -- go to next media
