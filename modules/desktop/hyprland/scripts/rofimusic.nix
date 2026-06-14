@@ -11,7 +11,7 @@ pkgs.writeShellScriptBin "rofimusic" ''
     ["Pop 📻🎶"]="https://youtube.com/playlist?list=PLMC9KNkIncKtPzgY-5rmhvj7fax8fdxoj"
     ["Dance 📻🎶"]="https://dancewave.online:443/dance.mp3"
     ["Lofi Radio ☕️🎶"]="https://play.streamafrica.net/lofiradio"
-    ["96.3 Easy Rock 📻🎶"]="https://radio-stations-philippines.com/easy-rock"
+    ["96.3 Easy Rock 📻🎶"]="https://radio-stations-philippines.com/easy-rock"$
     ["Rock 📻🎶"]="https://www.youtube.com/playlist?list=PL6Lt9p1lIRZ311J9ZHuzkR5A3xesae2pk"
     ["Ghibli Music 🎻🎶"]="https://youtube.com/playlist?list=PLNi74S754EXbrzw-IzVhpeAaMISNrzfUy&si=rqnXCZU5xoFhxfOl"
     ["Top Youtube Music 2023 ☕️🎶"]="https://youtube.com/playlist?list=PLDIoUOhQQPlXr63I_vwF9GD8sAKh77dWU&si=y7qNeEVFNgA-XxKy"

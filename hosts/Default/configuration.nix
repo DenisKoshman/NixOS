@@ -1,8 +1,6 @@
 { lib, ... }:
-let
-  vars = import ./variables.nix;
-in
-{
+let vars = import ./variables.nix;
+in {
   imports = [
     ./hardware-configuration.nix
     ./host-packages.nix
@@ -27,7 +25,7 @@ in
     ../../modules/core/system.nix
     ../../modules/core/users.nix
     # ../../modules/core/flatpak.nix
-    # ../../modules/core/virtualisation.nix
+    ../../modules/core/virtualisation.nix
     # ../../modules/core/dlna.nix
 
     # Optional
@@ -52,6 +50,5 @@ in
     ../../modules/programs/media/mpv
     ../../modules/programs/misc/tlp
     ../../modules/programs/misc/lact # GPU fan, clock and power configuration
-  ]
-  ++ lib.optional (vars.games == true) ../../modules/core/games.nix;
+  ] ++ lib.optional (vars.games == true) ../../modules/core/games.nix;
 }
