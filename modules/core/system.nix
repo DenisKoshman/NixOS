@@ -1,23 +1,8 @@
-{
-  lib,
-  self,
-  inputs,
-  host,
-  pkgs,
-  overlays,
-  ...
-}:
+{ lib, self, inputs, host, pkgs, overlays, ... }:
 let
   inherit (import ../../hosts/${host}/variables.nix)
-    consoleKeymap
-    kbdLayout
-    kbdVariant
-    locale
-    timezone
-    capslockAsESC
-    ;
-in
-{
+    consoleKeymap kbdLayout kbdVariant locale timezone capslockAsESC;
+in {
   imports = [ inputs.nix-index-database.nixosModules.nix-index ];
   programs = {
     nix-index-database.comma.enable = true;
@@ -29,7 +14,8 @@ in
   services.xserver = {
     enable = true;
     excludePackages = with pkgs; [ xterm ];
-    exportConfiguration = true; # Make sure /etc/X11/xkb is populated so localectl works correctly
+    exportConfiguration =
+      true; # Make sure /etc/X11/xkb is populated so localectl works correctly
     xkb = {
       layout = "${kbdLayout}";
       variant = "${kbdVariant}";
@@ -39,10 +25,8 @@ in
   nix = {
     # Nix Package Manager Settings
     settings = {
-      trusted-users = [
-        "root"
-        "@wheel"
-      ]; # Required by Cachix to be used as non-root user
+      trusted-users =
+        [ "root" "@wheel" ]; # Required by Cachix to be used as non-root user
       accept-flake-config = true;
       builders-use-substitutes = true;
       download-buffer-size = 200000000;
@@ -65,11 +49,9 @@ in
         # "chaotic-nyx.cachix.org-1:HfnXSw4pj95iI/n17rIDy40agHj12WfF+Gqk6SonIT8="
         # "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
       ];
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      use-xdg-base-directories = false;
+      experimental-features = [ "nix-command" "flakes" ];
+      use-xdg-base-directories =
+        true; # Use XDG Base Directories for Nix state and profiles
       warn-dirty = false;
       keep-outputs = true;
       keep-derivations = true;
@@ -112,8 +94,7 @@ in
     };
   };
   system.stateVersion = "26.05"; # Do not change!
-}
-// lib.optionalAttrs capslockAsESC {
+} // lib.optionalAttrs capslockAsESC {
   services.udev.extraHwdb = ''
     evdev:atkbd:*
       KEYBOARD_KEY_3a=esc
