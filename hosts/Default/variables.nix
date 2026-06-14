@@ -33,8 +33,9 @@
   timezone = "Europe/Berlin";
   locale = "en_GB.UTF-8";
   clock24h = true;
-  kbdLayout = "gb";
-  kbdVariant = "extd";
+  kbdLayout = "us";
+  kbdVariant =
+    "intl"; # e.g. "intl" for US International layout, leave empty for default
   consoleKeymap = "us";
   capslockAsESC = false;
 }
