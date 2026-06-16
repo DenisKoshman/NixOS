@@ -1,16 +1,10 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   boot = {
     # Filesystems support
-    supportedFilesystems = [
-      "ntfs"
-      "exfat"
-      "ext4"
-      "fat32"
-      "btrfs"
-    ];
+    supportedFilesystems = [ "ntfs" "exfat" "ext4" "fat32" "btrfs" ];
     tmp.cleanOnBoot = true;
-    kernelPackages = pkgs.linuxPackages_latest; # _latest, _zen, _xanmod_latest, _hardened, _rt, _OTHER_CHANNEL, etc.
+    kernelPackages =
+      pkgs.linuxPackages_latest; # _latest, _zen, _xanmod_latest, _hardened, _rt, _OTHER_CHANNEL, etc.
     kernelParams = [
       "preempt=full" # lower latency but less throughput
     ];
@@ -22,9 +16,9 @@
         enable = true;
         device = "nodev";
         efiSupport = true;
-        useOSProber = true;
-        gfxmodeEfi = "2715x1527"; # for 4k: 3840x2160
-        gfxmodeBios = "2715x1527"; # for 4k: 3840x2160
+        useOSProber = false;
+        gfxmodeEfi = "1920x1080"; # for 4k: 3840x2160
+        gfxmodeBios = "1920x1080"; # for 4k: 3840x2160
         theme = pkgs.stdenv.mkDerivation {
           pname = "distro-grub-themes";
           version = "3.1";
@@ -44,8 +38,8 @@
       interpreter = "${pkgs.appimage-run}/bin/appimage-run";
       recognitionType = "magic";
       offset = 0;
-      mask = ''\xff\xff\xff\xff\x00\x00\x00\x00\xff\xff\xff'';
-      magicOrExtension = ''\x7fELF....AI\x02'';
+      mask = "\\xff\\xff\\xff\\xff\\x00\\x00\\x00\\x00\\xff\\xff\\xff";
+      magicOrExtension = "\\x7fELF....AI\\x02";
     };
   };
 }
