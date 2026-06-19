@@ -85,6 +85,20 @@ in {
     XDG_BIN_HOME = "$HOME/.local/bin";
   };
 
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    xdgOpenUsePortal = true;
+    config = {
+      common = {
+        default = [ "hyprland" "gtk" ];
+        "org.freedesktop.impl.portal.OpenURI" = "gtk";
+        "org.freedesktop.impl.portal.FileChooser" = "gtk";
+        "org.freedesktop.impl.portal.Print" = "gtk";
+      };
+    };
+  };
+
   console.keyMap = "${consoleKeymap}";
   nixpkgs = {
     overlays = builtins.attrValues overlays;

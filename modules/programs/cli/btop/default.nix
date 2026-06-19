@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   home-manager.sharedModules = [
     (_: {
       programs.btop = {
@@ -21,6 +20,7 @@
           only_physical = true;
           io_mode = true;
           io_graph_combined = false;
+          update_ms = 200;
         };
         themes.catppuccin-mocha = ''
           # Main background, empty for terminal default, need to be empty if you want transparent background

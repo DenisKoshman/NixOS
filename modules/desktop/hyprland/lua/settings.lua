@@ -27,6 +27,7 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("rm '$XDG_CACHE_HOME/cliphist/db'")
 	hl.exec_cmd(batterynotify)
 	hl.exec_cmd("polkit-agent-helper-1")
+	hl.exec_cmd("dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP")
 end)
 
 hl.config({

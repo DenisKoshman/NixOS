@@ -109,8 +109,8 @@ hl.bind("ALT + Tab", hl.dsp.focus({ direction = "d" }))
 -- Move focus with mainMod + HJKL keys
 hl.bind(mainMod .. " + h", hl.dsp.focus({ direction = "l" }))
 hl.bind(mainMod .. " + l", hl.dsp.focus({ direction = "r" }))
-hl.bind(mainMod .. " + k", hl.dsp.focus({ direction = "u" }))
-hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "d" }))
+--hl.bind(mainMod .. " + k", hl.dsp.focus({ direction = "u" }))
+--hl.bind(mainMod .. " + j", hl.dsp.focus({ direction = "d" }))
 
 -- Switch scrolling columns
 hl.bind(mainMod .. " + period", hl.dsp.exec_cmd("hyprctl dispatch layoutmsg move +col"))

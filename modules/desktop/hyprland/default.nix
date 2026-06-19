@@ -1,16 +1,8 @@
-{
-  host,
-  inputs,
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ host, inputs, config, lib, pkgs, ... }:
 let
   inherit (lib) optional;
   inherit (import ../../../hosts/${host}/variables.nix) bar;
-in
-{
+in {
   imports = [
     ../../themes/Catppuccin # Catppuccin GTK and QT themes
     ./variables.nix
@@ -19,8 +11,7 @@ in
     ./programs/rofi
     ./programs/hypridle
     ./programs/hyprlock
-  ]
-  ++ optional (bar != "hyprpanel" && bar != "wayle") ./programs/swaync;
+  ] ++ optional (bar != "hyprpanel" && bar != "wayle") ./programs/swaync;
 
   environment.systemPackages = with pkgs; [
     pavucontrol
@@ -52,31 +43,15 @@ in
 
   programs.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
+    package =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
+    portalPackage =
+      inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
     # withUWSM = true;
   };
 
   home-manager.sharedModules = [
     (_: {
-      xdg.portal = {
-        enable = true;
-        extraPortals = with pkgs; [
-          xdg-desktop-portal-gtk
-        ];
-        xdgOpenUsePortal = true;
-        configPackages = [ config.programs.hyprland.package ];
-        config.hyprland = {
-          default = [
-            "hyprland"
-            "gtk"
-          ];
-          "org.freedesktop.impl.portal.OpenURI" = "gtk";
-          "org.freedesktop.impl.portal.FileChooser" = "gtk";
-          "org.freedesktop.impl.portal.Print" = "gtk";
-        };
-      };
-
       # Set wallpaper
       services.awww.enable = true;
 

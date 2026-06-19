@@ -6,9 +6,9 @@
     enable32Bit = true;
   };
   environment.systemPackages = with pkgs; [
-    # lutris
+    lutris
     # heroic
-    # bottles
+    bottles
     # ryujinx
     # prismlauncher
 
