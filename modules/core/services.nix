@@ -1,5 +1,4 @@
-{ ... }:
-{
+{ ... }: {
   # Services to start
   services = {
     libinput.enable = true; # Input Handling
@@ -21,16 +20,19 @@
       settings = {
         PasswordAuthentication = true;
         KbdInteractiveAuthentication = true;
-        AllowUsers = null; # Allows all users by default. Can be [ "user1" "user2" ]
+        AllowUsers =
+          null; # Allows all users by default. Can be [ "user1" "user2" ]
         UseDns = true;
         X11Forwarding = false;
-        PermitRootLogin = "prohibit-password"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
+        PermitRootLogin =
+          "prohibit-password"; # "yes", "without-password", "prohibit-password", "forced-commands-only", "no"
       };
     };
     blueman.enable = true; # Bluetooth Support
     tumbler.enable = true; # Image/video preview
 
     pulseaudio.enable = false;
+
     pipewire = {
       enable = true;
       alsa.enable = true;
@@ -54,18 +56,33 @@
         };
       };
       extraConfig.pipewire-pulse."92-low-latency" = {
-        context.modules = [
-          {
-            name = "libpipewire-module-protocol-pulse";
-            args = {
-              pulse.min.req = "256/48000";
-              pulse.default.req = "256/48000";
-              pulse.max.req = "256/48000";
-              pulse.min.quantum = "256/48000";
-              pulse.max.quantum = "256/48000";
+        context.modules = [{
+          name = "libpipewire-module-protocol-pulse";
+          args = {
+            pulse.min.req = "256/48000";
+            pulse.default.req = "256/48000";
+            pulse.max.req = "256/48000";
+            pulse.min.quantum = "256/48000";
+            pulse.max.quantum = "256/48000";
+          };
+        }];
+      };
+      extraConfig.pipewire."93-usb-low-latency" = {
+        "monitor.alsa.rules" = [{
+          matches = [{ "device.name" = "~alsa_card.usb-*"; }];
+          actions = {
+            update-props = {
+              "api.alsa.period-size" = 64;
+              "api.alsa.headroom" = 0;
+              # Новые критические параметры:
+              "api.alsa.disable-mmap" = false;
+              "api.alsa.disable-batch" =
+                true; # Заставляет отправлять пакеты мгновенно, а не пачками
+              "audio.format" =
+                "S24_4LE"; # Стандартный формат для чипов SteelSeries
             };
-          }
-        ];
+          };
+        }];
       };
     };
   };
