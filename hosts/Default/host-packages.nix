@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   environment.systemPackages = with pkgs; [
     obsidian
     #ludusavi # For game saves
@@ -7,6 +8,8 @@
     discord
     spotify
     google-chrome
+    obsidian
+    anki
 
     # All-in-one front-end for emulators
     #(retroarch.withCores (cores:

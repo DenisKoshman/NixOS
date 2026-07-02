@@ -252,17 +252,22 @@
             ];
 
             "nix.enableLanguageServer" = true;
-            "nix.formatterP4ath" = "nixfmt";
+            "nix.serverPath" = "nixd";
+            "nixpkgs" = { "expr" = "inputs.nixpkgs"; };
+            "formating" = { "command" = [ "nixfmt" ]; };
 
-            "nixd" = {
-              "nixpkgs" = { "expr" = "inputs.nixpkgs"; };
-              "options" = {
-                "nixos" = {
-                  "expr" = ''
-                    (builtins.getFlake "''${workspaceRoot}").nixosConfigurations.vivo.options'';
-                };
-              };
-            };
+            #"nix.enableLanguageServer" = true;
+            #"nix.formatterP4ath" = "nixfmt";
+
+            #"nixd" = {
+            #  "nixpkgs" = { "expr" = "inputs.nixpkgs"; };
+            #  "options" = {
+            #    "nixos" = {
+            #      "expr" = ''
+            #        (builtins.getFlake "''${workspaceRoot}").nixosConfigurations.vivo.options'';
+            #    };
+            #  };
+            #};
           };
         };
       };

@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   # TODO: review
   programs = {
     fuse.userAllowOther = true;
@@ -35,7 +36,7 @@
     tldr # Improved Man
     unrar # Tool For Handling .rar Files
     unzip # Tool For Handling .zip Files
-    pokego
+    #pokego
     # aider-chat # AI in terminal (Optional: Client only)
     # cmatrix # Matrix Movie Effect In Terminal
     # cowsay # Great Fun Terminal Program
@@ -51,7 +52,7 @@
     # lshw # Detailed Hardware Information
     # mpv # Incredible Video Player
     # ncdu # Disk Usage Analyzer With Ncurses Interface
-    # nixfmt-rfc-style # Nix Formatter
+    nixfmt # Nix Formatter
     # nwg-displays # configure monitor configs via GUI
     # onefetch # provides zsaneyos build info on current system
     # pavucontrol # For Editing Audio Levels & Devices
@@ -63,7 +64,7 @@
     # usbutils # Good Tools For USB Devices
     # uwsm # Universal Wayland Session Manager (optional must be enabled)
     # v4l-utils # Used For Things Like OBS Virtual Camera
-    # warp-terminal # Terminal with AI support build in
+    warp-terminal # Terminal with AI support build in
     # waypaper # Change wallpaper
     # wget # Tool For Fetching Files With Links
     # ytmdl # Tool For Downloading Audio From YouTube

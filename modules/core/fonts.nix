@@ -9,6 +9,8 @@
 
       # Normal Fonts
       noto-fonts
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
       noto-fonts-color-emoji
     ];
     fontconfig = {
@@ -18,16 +20,19 @@
         monospace = [
           "JetBrainsMono Nerd Font"
           "Maple Mono NF"
+          "Noto Sans Mono CJK JP" # Добавлено для моноширинных
           "Noto Mono"
-          "DejaVu Sans Mono" # Default
+          "DejaVu Sans Mono"
         ];
         sansSerif = [
           "Noto Sans"
-          "DejaVu Sans" # Default
+          "Noto Sans CJK JP"       # Добавлено: основной фикс для интерфейсов
+          "DejaVu Sans"
         ];
         serif = [
           "Noto Serif"
-          "DejaVu Serif" # Default
+          "Noto Serif CJK JP"      # Добавлено
+          "DejaVu Serif"
         ];
         emoji = [ "Noto Color Emoji" ];
       };
