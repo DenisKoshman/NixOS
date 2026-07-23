@@ -1,15 +1,35 @@
-{ pkgs, ... }: {
+{ pkgs, config, ... }:
+{
   boot = {
     # Filesystems support
-    supportedFilesystems = [ "ntfs" "exfat" "ext4" "fat32" "btrfs" ];
+    supportedFilesystems = [
+      "ntfs"
+      "exfat"
+      "ext4"
+      "fat32"
+      "btrfs"
+    ];
     tmp.cleanOnBoot = true;
-    kernelPackages =
-      pkgs.linuxPackages_latest; # _latest, _zen, _xanmod_latest, _hardened, _rt, _OTHER_CHANNEL, etc.
+    kernelPackages = pkgs.linuxKernel.packages.linux_6_6; # _latest, _zen, _xanmod_latest, _hardened, _rt, _OTHER_CHANNEL, etc.
     kernelParams = [
       "preempt=full" # lower latency but less throughput
       "snd_usb_audio.autosuspend=0"
       "usbcore.autosuspend=-1"
     ];
+
+    extraModulePackages = with config.boot.kernelPackages; [
+      v4l2loopback
+    ];
+
+    kernelModules = [
+      # Virtual Camera
+      "v4l2loopback"
+    ];
+
+    extraModprobeConfig = ''
+      options v4l2loopback devices=2 video_nr=0,1 card_label="DroidCam,OBS Virtual Camera" exclusive_caps=1,1
+    '';
+
     loader = {
       efi.canTouchEfiVariables = true;
       efi.efiSysMountPoint = "/boot";

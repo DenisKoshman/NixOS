@@ -255,19 +255,18 @@
             "nix.serverPath" = "nixd";
             "nixpkgs" = { "expr" = "inputs.nixpkgs"; };
             "formating" = { "command" = [ "nixfmt" ]; };
+            
+            "nix.formatterP4ath" = "nixfmt";
 
-            #"nix.enableLanguageServer" = true;
-            #"nix.formatterP4ath" = "nixfmt";
-
-            #"nixd" = {
-            #  "nixpkgs" = { "expr" = "inputs.nixpkgs"; };
-            #  "options" = {
-            #    "nixos" = {
-            #      "expr" = ''
-            #        (builtins.getFlake "''${workspaceRoot}").nixosConfigurations.vivo.options'';
-            #    };
-            #  };
-            #};
+            "nixd" = {
+              "nixpkgs" = { "expr" = "inputs.nixpkgs"; };
+              "options" = {
+                "nixos" = {
+                  "expr" = ''
+                    (builtins.getFlake "''${workspaceRoot}").nixosConfigurations.vivo.options'';
+                };
+              };
+            };
           };
         };
       };

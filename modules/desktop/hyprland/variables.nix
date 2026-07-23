@@ -56,7 +56,7 @@ in
             wallpaper = "${getExe wallpaper}"
             zoom = "${getExe zoom}"
 
-            mainMod = "ALT"
+            mainMod = "SUPER"
             launcher = "${getExe launcher}"
             bar = "${if bar == "wayle" then "wayle shell" else bar}"
             term = "${terminal}"

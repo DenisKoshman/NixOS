@@ -72,21 +72,20 @@
               venvVersionWarn
             '';
 
-            packages = with python.pkgs; [
-              venvShellHook
-              pip
+            packages =
+              (with python.pkgs; [
+                venvShellHook
+                pip
+                requests
+                aiohttp
+                selectolax 
 
-              # Add whatever else you'd like here.
-              # pkgs.basedpyright
-
-              # pkgs.black
-              # or
-              # python.pkgs.black
-
-              # pkgs.ruff
-              # or
-              # python.pkgs.ruff
-            ];
+              ])
+              ++ (with pkgs; [
+                # Добавляем .NET Runtime для запуска DepotDownloaderMod
+                dotnet-runtime_9
+                steamcmd
+              ]);
           };
         }
       );

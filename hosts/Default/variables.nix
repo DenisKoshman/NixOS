@@ -6,7 +6,7 @@
   desktop = "hyprland"; # hyprland, i3, gnome, plasma6
 
   # Theme & Appearance
-  bar = "waybar"; # waybar, wayle, hyprpanel, noctalia-shell, caelestia-shell
+  bar = "caelestia-shell"; # waybar, wayle, hyprpanel, noctalia-shell, caelestia-shell
   waybarTheme = "minimal"; # stylish, minimal
   sddmTheme =
     "astronaut"; # astronaut, black_hole, purple_leaves, jake_the_dog, hyprland_kath
@@ -15,7 +15,7 @@
   hyprlockWallpaper = "cyberpunk.webp";
 
   # Default Applications
-  terminal = "alacritty"; # kitty, alacritty, wezterm
+  terminal = "kitty"; # kitty, alacritty, wezterm
   editor = "vscode"; # nixvim, vscode, helix, doom-emacs, nvchad, neovim
   browser = "google-chrome"; # zen-beta, firefox, floorp
   fileManager = "yazi"; # yazi, lf, thunar
@@ -31,7 +31,7 @@
 
   # Localization
   timezone = "Europe/Berlin";
-  locale = "en_GB.UTF-8";
+  locale = "en_US.UTF-8";
   clock24h = true;
   kbdLayout = "us";
   kbdVariant =

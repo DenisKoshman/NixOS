@@ -37,7 +37,7 @@ let
         showBattery = true;
         showBluetooth = bluetoothSupport;
         showKbLayout = true;
-        showMicrophone = false;
+        showMicrophone = true;
         showNetwork = true;
       };
       workspaces = {
@@ -100,6 +100,7 @@ let
     };
 
     launcher = {
+      enabled = true;
       actionPrefix = ">";
       dragThreshold = 50;
       enableDangerousActions = false;
@@ -130,7 +131,7 @@ let
 
     services = {
       audioIncrement = "0.1";
-      weatherLocation = "51.5,-0.1";
+      weatherLocation = "49.7522,11.5419";
       useFahrenheit = false;
       useTwelveHourClock = !clock24h;
     };
@@ -196,6 +197,7 @@ in
 
         programs.caelestia = {
           enable = true;
+          cli.enable = true;
           systemd.enable = false;
         };
 

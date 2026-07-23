@@ -9,6 +9,7 @@
           obs-vaapi
           obs-vkcapture
           obs-pipewire-audio-capture
+          droidcam-obs
         ];
       };
     })

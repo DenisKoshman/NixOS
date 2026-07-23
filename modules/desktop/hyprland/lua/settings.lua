@@ -33,6 +33,7 @@ end)
 hl.config({
 	input = (function()
 		local t = {
+			kb_options = "grp:alt_shift_toggle,compose:ralt",
 			kb_layout = kbdLayout .. ",ru",
 			kb_variant = kbdVariant .. ",",
 			repeat_delay = 275,
@@ -74,7 +75,7 @@ hl.config({
 			},
 		},
 		resize_on_border = true,
-		layout = "dwindle", -- dwindle, master, scrolling, monocle
+		layout = "master", -- dwindle, master, scrolling, monocle
 		-- allow_tearing = true, -- Allow tearing for games (use immediate window rules for specific games or all titles)
 	},
 	decoration = {
@@ -134,9 +135,10 @@ hl.config({
 		preserve_split = true,
 	},
 	master = {
-		new_status = "master",
-		new_on_top = true,
-		mfact = 0.5,
+		new_status = "slave"; 
+    	new_on_top = true;    
+    	mfact = 0.5;          
+    	orientation = "left"; 
 	},
 	binds = {
 		workspace_back_and_forth = 0,

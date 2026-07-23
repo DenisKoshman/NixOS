@@ -10,6 +10,12 @@
     google-chrome
     obsidian
     anki
+    depotdownloader
+    steamcmd
+    nwg-displays
+    droidcam
+    ffmpeg
+
 
     # All-in-one front-end for emulators
     #(retroarch.withCores (cores:
